@@ -53,6 +53,7 @@ export const createRequestObjectPayload = async (opts: CreateAuthorizationReques
     exp,
     jti,
     aud,
+    ...(opts.additionalPayloadClaims ?? {})
   })
 }
 
