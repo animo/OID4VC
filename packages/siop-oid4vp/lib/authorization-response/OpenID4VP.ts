@@ -339,11 +339,12 @@ export const assertValidVerifiablePresentations = async (args: {
   }
 
   // Handle mdocs, keep them out of pex
-  let presentationsArray = Array.isArray(presentations) ? presentations : [presentations]
-  if (presentationsArray.every((p) => p.format === 'mso_mdoc')) {
-    return
-  }
-  presentationsArray = presentationsArray.filter((p) => p.format !== 'mso_mdoc')
+  const presentationsArray = Array.isArray(presentations) ? presentations : [presentations]
+  // Sphereon bypasses mdoc from pex
+  // if (presentationsArray.every((p) => p.format === 'mso_mdoc')) {
+  //   return
+  // }
+  // presentationsArray = presentationsArray.filter((p) => p.format !== 'mso_mdoc')
 
   if (
     (!args.presentationDefinitions || args.presentationDefinitions.filter((a) => a.definition).length === 0) &&
