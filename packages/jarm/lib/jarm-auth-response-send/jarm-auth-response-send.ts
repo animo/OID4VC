@@ -47,13 +47,34 @@ export const jarmAuthResponseSend = async (input: JarmAuthResponseSendInput): Pr
 };
 
 async function handleDirectPostJwt(responseEndpoint: URL, responseJwt: string) {
-  const response = await fetch(responseEndpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `response=${responseJwt}`,
-  });
+    // Hack for french playground requiring state outside of the JARM response
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (global.FUNKE_PATCH_STATE) {
+      
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const state = global.FUNKE_PATCH_STATE
 
-  return response;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    global.FUNKE_PATCH_STATE = undefined
+    const response = await fetch(responseEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `response=${responseJwt}&state=${state}`,
+    });
+  
+    return response;
+  } else {
+    const response = await fetch(responseEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `response=${responseJwt}`,
+    });
+  
+    return response;
+  }
 }
 
 async function handleQueryJwt(responseEndpoint: URL, responseJwt: string) {
