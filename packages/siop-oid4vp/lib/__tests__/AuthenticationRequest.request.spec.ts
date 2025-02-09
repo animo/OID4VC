@@ -25,7 +25,7 @@ import {
   VERIFIERZ_PURPOSE_TO_VERIFY,
   VERIFIERZ_PURPOSE_TO_VERIFY_NL
 } from './data/mockedData'
-import { IPresentationDefinition } from '@sphereon/pex'
+import { IPresentationDefinition } from '@animo-id/pex'
 
 const EXAMPLE_REDIRECT_URL = 'https://acme.com/hello'
 const EXAMPLE_REFERENCE_URL = 'https://rp.acme.com/siop/jwts'

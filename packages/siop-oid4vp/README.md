@@ -565,7 +565,7 @@ In the code examples we will use 'userSelectedCredentials' as variable for the o
 
 ```typescript
 // Your application process here, resulting in:
-import { IVerifiableCredential } from '@sphereon/pex'
+import { IVerifiableCredential } from '@animo-id/pex'
 
 const userSelectedCredentials: VerifiableCredential[] // Your selected credentials
 ```

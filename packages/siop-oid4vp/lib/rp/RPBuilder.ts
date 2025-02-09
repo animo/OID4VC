@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events'
 
-import { IPresentationDefinition } from '@sphereon/pex'
+import { IPresentationDefinition } from '@animo-id/pex'
 import { Hasher } from '@sphereon/ssi-types'
 
 import { PropertyTarget, PropertyTargets } from '../authorization-request'

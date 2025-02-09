@@ -132,7 +132,7 @@ importers:
         version: 0.23.0(expo@48.0.21(@babel/core@7.25.2)(encoding@0.1.13))(msrcrypto@1.5.8)(react-native-securerandom@1.0.1)
       '@transmute/did-key.js':
         specifier: ^0.3.0-unstable.10
-        version: 0.3.0-unstable.10(encoding@0.1.13)
+        version: 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@trust/keyto':
         specifier: ^2.0.0-alpha1
         version: 2.0.0-alpha1
@@ -439,6 +439,9 @@ importers:
 
   packages/siop-oid4vp:
     dependencies:
+      '@animo-id/pex':
+        specifier: 4.1.1-alpha.0
+        version: 4.1.1-alpha.0
       '@astronautlabs/jsonpath':
         specifier: ^1.1.2
         version: 1.1.2
@@ -448,9 +451,6 @@ importers:
       '@sphereon/oid4vc-common':
         specifier: workspace:*
         version: link:../common
-      '@sphereon/pex':
-        specifier: 5.0.0-unstable.24
-        version: 5.0.0-unstable.24
       '@sphereon/pex-models':
         specifier: ^2.3.1
         version: 2.3.1
@@ -641,6 +641,10 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@animo-id/pex@4.1.1-alpha.0':
+    resolution: {integrity: sha512-6ieHhH9UE9DLFOJegMCabG3qUFlQk4TLhBefxInpyjx2Ly6kuloVMScJYcnQTs/E6nuHGMd7ebUaKy4+0+ZbOA==}
+    engines: {node: '>=18'}
 
   '@astronautlabs/jsonpath@1.1.2':
     resolution: {integrity: sha512-FqL/muoreH7iltYC1EB5Tvox5E8NSOOPGkgns4G+qxRKl6k5dxEVljUjB5NcKESzkqwnUqWjSZkL61XGYOuV+A==}
@@ -2540,10 +2544,6 @@ packages:
   '@sphereon/pex-models@2.3.1':
     resolution: {integrity: sha512-SByU4cJ0XYA6VZQ/L6lsSiRcFtBPHbFioCeQ4GP7/W/jQ+PSBD7uK2oTnKQ9/0iEiMK/6JYqhKgLs4a9UX3UTQ==}
 
-  '@sphereon/pex@5.0.0-unstable.24':
-    resolution: {integrity: sha512-CZc+kr8cJqPsFSpg4kHyamr5oB5xLVP2E5eJ0pbetOfOE2uSxqk0/A8zGazcPhU1zZILrO51hD4vW/hJRgtKJQ==}
-    engines: {node: '>=18'}
-
   '@sphereon/ssi-express-support@0.30.2-next.279':
     resolution: {integrity: sha512-FtIj3bTBfbaeiZ6UGAXTOjA8KixFlzZ3wmg5zTFNOfv3POtEaS6x8xyZJANNW+G+hU2ZWpGKdWp5AVINdrEsLg==}
     peerDependencies:
@@ -2561,8 +2561,8 @@ packages:
   '@sphereon/ssi-sdk-ext.key-utils@0.23.0':
     resolution: {integrity: sha512-BfULXvQmcUrBq2DqYxJHKnEoB2d5icu3TJ9GP2aP1WybSULTjL96Wv5r7QKgktcodKaL+F+oQ7r8sC9qBl1exw==}
 
-  '@sphereon/ssi-types@0.30.2-next.129':
-    resolution: {integrity: sha512-F1TDy9S5ajDJDp21cINXseGSux9kGA+x0KScAS+5+B/RdMGRp7bLOM+3YpQw1QGPqKxVc7JAd2gAn7AI0pAkZA==}
+  '@sphereon/ssi-types@0.30.2-next.135':
+    resolution: {integrity: sha512-YLQfFMPUlOJUxHbOS9v01nG3cgLwTk3d95/rTnOmEQx9kXgXjoXdvt7D0uGcMRL3RHeQ9biT/jWY//mDvCirVQ==}
 
   '@sphereon/ssi-types@0.30.2-next.279':
     resolution: {integrity: sha512-8I+wlZIKICKqwTJ0lObJWao2KKYHA3hoRzB4mDapPAIPKUbojJCIh9ei37DnEf5AEDAtUS1gOlEDmC/cKJrtpA==}
@@ -8644,6 +8644,22 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
+  '@animo-id/pex@4.1.1-alpha.0':
+    dependencies:
+      '@astronautlabs/jsonpath': 1.1.2
+      '@sd-jwt/decode': 0.7.2
+      '@sd-jwt/present': 0.7.2
+      '@sd-jwt/types': 0.7.2
+      '@sphereon/pex-models': 2.3.1
+      '@sphereon/ssi-types': 0.30.2-next.135
+      ajv: 8.17.1
+      ajv-formats: 2.1.1(ajv@8.17.1)
+      jwt-decode: 3.1.2
+      nanoid: 3.3.7
+      uint8arrays: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
+
   '@astronautlabs/jsonpath@1.1.2':
     dependencies:
       static-eval: 2.0.2
@@ -11820,22 +11836,6 @@ snapshots:
 
   '@sphereon/pex-models@2.3.1': {}
 
-  '@sphereon/pex@5.0.0-unstable.24':
-    dependencies:
-      '@astronautlabs/jsonpath': 1.1.2
-      '@sd-jwt/decode': 0.7.2
-      '@sd-jwt/present': 0.7.2
-      '@sd-jwt/types': 0.7.2
-      '@sphereon/pex-models': 2.3.1
-      '@sphereon/ssi-types': 0.30.2-next.129
-      ajv: 8.17.1
-      ajv-formats: 2.1.1(ajv@8.17.1)
-      jwt-decode: 3.1.2
-      nanoid: 3.3.7
-      uint8arrays: 3.1.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@sphereon/ssi-express-support@0.30.2-next.279':
     dependencies:
       body-parser: 1.20.3
@@ -11879,7 +11879,7 @@ snapshots:
       - react-native-securerandom
       - supports-color
 
-  '@sphereon/ssi-types@0.30.2-next.129':
+  '@sphereon/ssi-types@0.30.2-next.135':
     dependencies:
       '@sd-jwt/decode': 0.7.2
       '@sphereon/kmp-mdl-mdoc': 0.2.0-SNAPSHOT.22
@@ -12030,7 +12030,7 @@ snapshots:
 
   '@transmute/did-context@0.6.1-unstable.37': {}
 
-  '@transmute/did-key-bls12381@0.3.0-unstable.10(encoding@0.1.13)':
+  '@transmute/did-key-bls12381@0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)':
     dependencies:
       '@transmute/bls12381-key-pair': 0.7.0-unstable.81(encoding@0.1.13)
       '@transmute/did-key-common': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
@@ -12058,7 +12058,7 @@ snapshots:
       - encoding
       - web-streams-polyfill
 
-  '@transmute/did-key-secp256k1@0.3.0-unstable.10(encoding@0.1.13)':
+  '@transmute/did-key-secp256k1@0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)':
     dependencies:
       '@transmute/did-key-common': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@transmute/secp256k1-key-pair': 0.7.0-unstable.82
@@ -12068,7 +12068,7 @@ snapshots:
 
   '@transmute/did-key-test-vectors@0.3.0-unstable.10': {}
 
-  '@transmute/did-key-web-crypto@0.3.0-unstable.10(encoding@0.1.13)':
+  '@transmute/did-key-web-crypto@0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)':
     dependencies:
       '@transmute/did-key-common': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@transmute/web-crypto-key-pair': 0.7.0-unstable.82
@@ -12076,7 +12076,7 @@ snapshots:
       - encoding
       - web-streams-polyfill
 
-  '@transmute/did-key-x25519@0.3.0-unstable.10(encoding@0.1.13)':
+  '@transmute/did-key-x25519@0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)':
     dependencies:
       '@transmute/did-key-common': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@transmute/x25519-key-pair': 0.7.0-unstable.82
@@ -12084,14 +12084,14 @@ snapshots:
       - encoding
       - web-streams-polyfill
 
-  '@transmute/did-key.js@0.3.0-unstable.10(encoding@0.1.13)':
+  '@transmute/did-key.js@0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)':
     dependencies:
-      '@transmute/did-key-bls12381': 0.3.0-unstable.10(encoding@0.1.13)
+      '@transmute/did-key-bls12381': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@transmute/did-key-ed25519': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
-      '@transmute/did-key-secp256k1': 0.3.0-unstable.10(encoding@0.1.13)
+      '@transmute/did-key-secp256k1': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       '@transmute/did-key-test-vectors': 0.3.0-unstable.10
-      '@transmute/did-key-web-crypto': 0.3.0-unstable.10(encoding@0.1.13)
-      '@transmute/did-key-x25519': 0.3.0-unstable.10(encoding@0.1.13)
+      '@transmute/did-key-web-crypto': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
+      '@transmute/did-key-x25519': 0.3.0-unstable.10(encoding@0.1.13)(web-streams-polyfill@3.3.3)
       base64url: 3.0.1
     transitivePeerDependencies:
       - encoding

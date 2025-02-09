@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
 
 import { SigningAlgo } from '@sphereon/oid4vc-common'
-import { IPresentationDefinition } from '@sphereon/pex'
+import { IPresentationDefinition } from '@animo-id/pex'
 import { CredentialMapper, IPresentation, IProofType, IVerifiableCredential, W3CVerifiablePresentation } from '@sphereon/ssi-types'
 import nock from 'nock'
 

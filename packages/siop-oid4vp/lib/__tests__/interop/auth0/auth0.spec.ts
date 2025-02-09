@@ -1,4 +1,4 @@
-import { PEX } from '@sphereon/pex'
+import { PEX } from '@animo-id/pex'
 
 import { anyDef, VCs } from './fixtures'
 

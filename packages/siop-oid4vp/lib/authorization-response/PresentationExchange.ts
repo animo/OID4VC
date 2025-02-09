@@ -8,8 +8,8 @@ import {
   Validated,
   VerifiablePresentationFromOpts,
   VerifiablePresentationResult,
-} from '@sphereon/pex'
-import { PresentationEvaluationResults } from '@sphereon/pex/dist/main/lib/evaluation'
+} from '@animo-id/pex'
+import { PresentationEvaluationResults } from '@animo-id/pex/dist/main/lib/evaluation'
 import { Format, PresentationDefinitionV1, PresentationDefinitionV2, PresentationSubmission } from '@sphereon/pex-models'
 import {
   CredentialMapper,

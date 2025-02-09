@@ -1,4 +1,4 @@
-import { PEX } from '@sphereon/pex'
+import { PEX } from '@animo-id/pex'
 
 import { getNonce, removeNullUndefined } from '../helpers'
 import { RequestObject } from '../request-object'

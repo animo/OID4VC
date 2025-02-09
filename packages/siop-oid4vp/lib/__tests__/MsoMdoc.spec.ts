@@ -1,5 +1,5 @@
 import { SigningAlgo } from '@sphereon/oid4vc-common'
-import { PEX } from '@sphereon/pex'
+import { PEX } from '@animo-id/pex'
 import { PresentationDefinitionV2 } from '@sphereon/pex-models'
 import { OriginalVerifiableCredential } from '@sphereon/ssi-types'
 

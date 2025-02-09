@@ -1,5 +1,5 @@
 import { parseJWT } from '@sphereon/oid4vc-common'
-import { IPresentationDefinition, PEX, PresentationSubmissionLocation } from '@sphereon/pex'
+import { IPresentationDefinition, PEX, PresentationSubmissionLocation } from '@animo-id/pex'
 import { Format } from '@sphereon/pex-models'
 import {
   CompactSdJwtVc,

@@ -1,5 +1,5 @@
 import { SigningAlgo } from '@sphereon/oid4vc-common'
-import { PresentationSignCallBackParams } from '@sphereon/pex'
+import { PresentationSignCallBackParams } from '@animo-id/pex'
 import { IProofType } from '@sphereon/ssi-types'
 import * as jose from 'jose'
 import { KeyLike } from 'jose'

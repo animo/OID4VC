@@ -1,5 +1,5 @@
 import { JwtIssuer } from '@sphereon/oid4vc-common'
-import { IPresentationDefinition, PresentationSignCallBackParams } from '@sphereon/pex'
+import { IPresentationDefinition, PresentationSignCallBackParams } from '@animo-id/pex'
 import { Format } from '@sphereon/pex-models'
 import {
   CompactSdJwtVc,
